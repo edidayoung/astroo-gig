@@ -88,10 +88,11 @@ function setupEventListeners() {
     });
 }
 
-// Review Carousel Functionality
+// Enhanced Review Carousel Functionality
 let currentReviewIndex = 0;
 let reviewsPerView = 3;
 let totalReviews = 0;
+let autoSlideInterval;
 
 function initReviewCarousel() {
     const carousel = document.getElementById('reviewsCarousel');
@@ -104,6 +105,14 @@ function initReviewCarousel() {
     const reviewCards = carousel.querySelectorAll('.review-card');
     totalReviews = reviewCards.length;
     
+    // Add quote icons to each review card
+    reviewCards.forEach(card => {
+        const quoteIcon = document.createElement('div');
+        quoteIcon.className = 'quote-icon';
+        quoteIcon.innerHTML = '<i class="fas fa-quote-right"></i>';
+        card.appendChild(quoteIcon);
+    });
+    
     // Update reviews per view based on screen size
     updateReviewsPerView();
     
@@ -114,12 +123,14 @@ function initReviewCarousel() {
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             navigateReviews('prev');
+            resetAutoSlide();
         });
     }
     
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             navigateReviews('next');
+            resetAutoSlide();
         });
     }
     
@@ -129,6 +140,7 @@ function initReviewCarousel() {
     
     carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        resetAutoSlide();
     });
     
     carousel.addEventListener('touchend', (e) => {
@@ -154,6 +166,7 @@ function initReviewCarousel() {
         isDragging = true;
         startX = e.pageX;
         carousel.style.cursor = 'grabbing';
+        resetAutoSlide();
     });
     
     carousel.addEventListener('mousemove', (e) => {
@@ -191,6 +204,9 @@ function initReviewCarousel() {
         createReviewDots();
     });
     
+    // Initialize auto-slide
+    startAutoSlide();
+    
     // Initial update
     updateCarouselPosition();
 }
@@ -210,9 +226,9 @@ function navigateReviews(direction) {
     const maxIndex = Math.max(0, totalReviews - reviewsPerView);
     
     if (direction === 'next') {
-        currentReviewIndex = Math.min(currentReviewIndex + 1, maxIndex);
+        currentReviewIndex = currentReviewIndex >= maxIndex ? 0 : currentReviewIndex + 1;
     } else {
-        currentReviewIndex = Math.max(currentReviewIndex - 1, 0);
+        currentReviewIndex = currentReviewIndex <= 0 ? maxIndex : currentReviewIndex - 1;
     }
     
     updateCarouselPosition();
@@ -236,15 +252,24 @@ function updateCarouselPosition() {
     
     carousel.style.transform = `translateX(-${moveDistance}px)`;
     
+    // Update active card styling
+    reviewCards.forEach((card, index) => {
+        if (index >= currentReviewIndex && index < currentReviewIndex + reviewsPerView) {
+            card.classList.add('active');
+        } else {
+            card.classList.remove('active');
+        }
+    });
+    
     // Update button states
     const maxIndex = Math.max(0, totalReviews - reviewsPerView);
     
     if (prevBtn) {
-        prevBtn.disabled = currentReviewIndex === 0;
+        prevBtn.disabled = false; // Always enabled for looping
     }
     
     if (nextBtn) {
-        nextBtn.disabled = currentReviewIndex >= maxIndex;
+        nextBtn.disabled = false; // Always enabled for looping
     }
     
     // Update dots
@@ -270,6 +295,7 @@ function createReviewDots() {
         dot.addEventListener('click', () => {
             currentReviewIndex = i;
             updateCarouselPosition();
+            resetAutoSlide();
         });
         
         dotsContainer.appendChild(dot);
@@ -285,6 +311,18 @@ function updateReviewDots() {
             dot.classList.remove('active');
         }
     });
+}
+
+// Auto-slide functionality
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        navigateReviews('next');
+    }, 5000); // Change slide every 5 seconds
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
 }
 
 // Initialize review carousel when DOM is loaded

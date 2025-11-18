@@ -194,7 +194,42 @@
     }
     
     .reviews-carousel-wrapper {
+        padding: 0 70px;
+        margin: 50px 0 30px;
+    }
+    
+    .review-nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .review-prev {
+        left: 10px;
+    }
+    
+    .review-next {
+        right: 10px;
+    }
+    
+    .reviews-section .section-header h2 {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        flex: 0 0 100%;
+        padding: 30px 25px;
+    }
+    
+    .reviews-carousel {
+        gap: 25px;
+    }
+    
+    .reviews-carousel-wrapper {
         padding: 0 60px;
+        margin: 50px 0 30px;
     }
     
     .review-nav-btn {
@@ -210,17 +245,31 @@
     .review-next {
         right: 5px;
     }
+    
+    .review-text {
+        font-size: 15px;
+    }
+    
+    .reviewer-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .reviewer-info h4 {
+        font-size: 16px;
+    }
+    
+    .reviewer-info span {
+        font-size: 13px;
+    }
+    
+    .reviews-section .section-header h2 {
+        font-size: 36px;
+    }
 }
 
-@media (max-width: 768px) {
-    .review-card {
-        flex: 0 0 100%;
-    }
-    
-    .reviews-carousel {
-        gap: 20px;
-    }
-    
+@media (max-width: 480px) {
     .reviews-carousel-wrapper {
         padding: 0 50px;
     }
@@ -231,58 +280,21 @@
         font-size: 16px;
     }
     
-    .review-prev {
-        left: 0;
-    }
-    
-    .review-next {
-        right: 0;
-    }
-    
     .review-card {
-        padding: 25px;
-    }
-    
-    .review-text {
-        font-size: 14px;
-    }
-    
-    .reviewer-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-    }
-    
-    .reviewer-info h4 {
-        font-size: 15px;
-    }
-    
-    .reviewer-info span {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .reviews-carousel-wrapper {
-        padding: 0 45px;
-    }
-    
-    .review-nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
-    
-    .review-card {
-        padding: 20px;
+        padding: 25px 20px;
     }
     
     .review-dot {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
     }
     
     .review-dot.active {
         width: 25px;
+        border-radius: 6px;
+    }
+    
+    .reviews-section .section-header h2 {
+        font-size: 32px;
     }
 }
