@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphones - Astro Services</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%238B5CF6'/><stop offset='100%25' style='stop-color:%23C084FC'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><path d='M50 65 L50 70 M35 50 Q50 35 65 50 M25 40 Q50 20 75 40 M15 30 Q50 5 85 30' stroke='white' stroke-width='6' stroke-linecap='round' fill='none'/><circle cx='50' cy='72' r='3' fill='white'/></svg>">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <span class="nav-logo-text">Astro Services</span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="../index.html#products" class="nav-item">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+                <div class="nav-item nav-dropdown active" id="categoriesDropdown">
+                    <div class="nav-dropdown-trigger">
+                        <i class="fas fa-th-large"></i>
+                        <span>Categories</span>
+                        <i class="fas fa-chevron-down nav-arrow"></i>
+                    </div>
+                    <div class="nav-dropdown-content">
+                        <a href="smartphones.html" class="dropdown-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Smartphones</span>
+                        </a>
+                        <a href="laptops.html" class="dropdown-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>Laptops</span>
+                        </a>
+                        <a href="audio.html" class="dropdown-item">
+                            <i class="fas fa-headphones"></i>
+                            <span>Audio</span>
+                        </a>
+                        <a href="accessories.html" class="dropdown-item">
+                            <i class="fas fa-plug"></i>
+                            <span>Accessories</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="../index.html#reviews" class="nav-item">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <input type="text" id="searchInput" placeholder="Search..." class="nav-search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="nav-cart" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="nav-cart-badge">0</span>
+                </button>
+                <button class="nav-hamburger" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Category Header -->
+    <section class="category-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Smartphones</span>
+            </div>
+            <h1><i class="fas fa-mobile-alt"></i> Smartphones</h1>
+            <p>Discover our latest collection of premium smartphones</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="category-products">
+        <div class="container">
+            <div class="products-grid" id="categoryProducts">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <span>Astro Services</span>
+                    </div>
+                    <p>Your trusted partner for premium electronics in Nigeria.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#products">Products</a></li>
+                        <li><a href="../index.html#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="https://wa.me/2349133993369" target="_blank"><i class="fas fa-phone"></i> 09133993369</a></li>
+                        <li><a href="https://facebook.com/AstroEkpanya" target="_blank"><i class="fab fa-facebook"></i> Facebook/Astro Ekpanya</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Astro Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Your Cart</h2>
+                <button class="close-modal" onclick="closeCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₦0</span>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">
+                    <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2349133993369" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/products-data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/category.js"></script>
+    <script>
+        loadCategoryProducts('smartphones');
+    </script>
+</body>
+</html>

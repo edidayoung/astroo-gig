@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Services - Premium Electronics</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%238B5CF6'/><stop offset='100%25' style='stop-color:%23C084FC'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><path d='M50 65 L50 70 M35 50 Q50 35 65 50 M25 40 Q50 20 75 40 M15 30 Q50 5 85 30' stroke='white' stroke-width='6' stroke-linecap='round' fill='none'/><circle cx='50' cy='72' r='3' fill='white'/></svg>">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <span class="nav-logo-text">Astro Services</span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#products" class="nav-item">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+                <div class="nav-item nav-dropdown" id="categoriesDropdown">
+                    <div class="nav-dropdown-trigger">
+                        <i class="fas fa-th-large"></i>
+                        <span>Categories</span>
+                        <i class="fas fa-chevron-down nav-arrow"></i>
+                    </div>
+                    <div class="nav-dropdown-content">
+                        <a href="pages/smartphones.html" class="dropdown-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Smartphones</span>
+                        </a>
+                        <a href="pages/laptops.html" class="dropdown-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>Laptops</span>
+                        </a>
+                        <a href="pages/audio.html" class="dropdown-item">
+                            <i class="fas fa-headphones"></i>
+                            <span>Audio</span>
+                        </a>
+                        <a href="pages/accessories.html" class="dropdown-item"></a>
+                            <i class="fas fa-plug"></i>
+                            <span>Accessories</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="#reviews" class="nav-item">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <input type="text" id="searchInput" placeholder="Search..." class="nav-search-input">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="nav-cart" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="nav-cart-badge">0</span>
+                </button>
+                <button class="nav-hamburger" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-content">
+                        <h1>Your One-Stop <span class="gradient-text">Shop</span> for Premium Electronics</h1>
+                        <p>Discover the latest in mobile devices, laptops, gaming gear, and audio equipment. Quality products at unbeatable prices.</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="scrollToProducts()">
+                                Shop Now <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="btn btn-outline" onclick="contactWhatsApp('I want to make an inquiry')">
+                                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="hero-grid-images">
+                        <div class="hero-grid-item">
+                            <img src="images/samsung.jpg" alt="Smartphones">
+                            <div class="hero-grid-overlay">
+                                <h4>Latest Smartphones</h4>
+                                <p>From ₦150,000</p>
+                            </div>
+                        </div>
+                        <div class="hero-grid-item">
+                            <img src="images/LaptopSkinBrownGirl.jpg" alt="Laptops">
+                            <div class="hero-grid-overlay">
+                                <h4>Pro Laptops</h4>
+                                <p>From ₦250,000</p>
+                            </div>
+                        </div>
+                        <div class="hero-grid-item">
+                            <img src="images/earBuds.jpg" alt="Audio">
+                            <div class="hero-grid-overlay">
+                                <h4>Premium Audio</h4>
+                                <p>From ₦25,000</p>
+                            </div>
+                        </div>
+                        <div class="hero-grid-item">
+                            <img src="images/watchHands.jpg" alt="Accessories">
+                            <div class="hero-grid-overlay">
+                                <h4>Accessories</h4>
+                                <p>From ₦15,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision-section">
+        <div class="container">
+            <div class="mission-vision-container">
+                <div class="mv-card mission-card">
+                    <div class="mv-icon-wrapper">
+                        <div class="mv-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To deliver premium electronics and exceptional repair services that empower our customers with reliable technology solutions and outstanding support.</p>
+                    <div class="mv-glow"></div>
+                </div>
+                
+                <div class="mv-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="mv-card vision-card">
+                    <div class="mv-icon-wrapper">
+                        <div class="mv-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be Nigeria's most trusted electronics partner, recognized for quality, innovation, and customer satisfaction in every interaction.</p>
+                    <div class="mv-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Our most popular electronics handpicked for you</p>
+            </div>
+
+            <!-- Products will be dynamically loaded here -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Only 6 best-selling products will be shown -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Don't just take our word for it</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Bought an iPhone 14 Pro from Astro Services and the experience was amazing! Fast delivery, genuine product, and excellent customer service. Highly recommended!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">A</div>
+                        <div class="reviewer-info">
+                            <h4>Adeyemi Johnson</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Best place to buy electronics in Lagos! Got my MacBook Pro at a great price. The team was very helpful and professional. Will definitely shop here again."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">C</div>
+                        <div class="reviewer-info">
+                            <h4>Chioma Okafor</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Purchased a gaming setup from Astro Services. Everything was authentic and works perfectly. Their WhatsApp support is super responsive. 5 stars!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">T</div>
+                        <div class="reviewer-info">
+                            <h4>Tunde Bakare</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <span>Astro Services</span>
+                    </div>
+                    <p>Your trusted partner for premium electronics in Nigeria.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="https://wa.me/2349133993369" target="_blank"><i class="fas fa-phone"></i> 09133993369</a></li>
+                        <li><a href="https://facebook.com/AstroEkpanya" target="_blank"><i class="fab fa-facebook"></i> Facebook/Astro Ekpanya</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Astro Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Your Cart</h2>
+                <button class="close-modal" onclick="closeCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₦0</span>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">
+                    <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2349133993369" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/products-data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
