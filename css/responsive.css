@@ -186,3 +186,103 @@
         justify-content: flex-start;
     }
 }
+
+/* Review Carousel Responsive Styles */
+@media (max-width: 1024px) {
+    .review-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+    
+    .reviews-carousel-wrapper {
+        padding: 0 60px;
+    }
+    
+    .review-nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .review-prev {
+        left: 5px;
+    }
+    
+    .review-next {
+        right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        flex: 0 0 100%;
+    }
+    
+    .reviews-carousel {
+        gap: 20px;
+    }
+    
+    .reviews-carousel-wrapper {
+        padding: 0 50px;
+    }
+    
+    .review-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .review-prev {
+        left: 0;
+    }
+    
+    .review-next {
+        right: 0;
+    }
+    
+    .review-card {
+        padding: 25px;
+    }
+    
+    .review-text {
+        font-size: 14px;
+    }
+    
+    .reviewer-avatar {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .reviewer-info h4 {
+        font-size: 15px;
+    }
+    
+    .reviewer-info span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-carousel-wrapper {
+        padding: 0 45px;
+    }
+    
+    .review-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .review-card {
+        padding: 20px;
+    }
+    
+    .review-dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .review-dot.active {
+        width: 25px;
+    }
+}

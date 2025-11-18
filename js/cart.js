@@ -2,10 +2,11 @@
 let cart = [];
 
 // Add to Cart Function
-function addToCart(productName, price) {
+function addToCart(productName, price, productImage) {
     const product = {
         name: productName,
-        price: price
+        price: price,
+        image: productImage || 'placeholder.jpg'
     };
     
     cart.push(product);
@@ -39,8 +40,15 @@ function displayCartItems() {
         const priceValue = parseInt(item.price.replace(/[₦,]/g, ''));
         total += priceValue;
         
+        // Determine correct image path
+        const isInSubfolder = window.location.pathname.includes('/pages/');
+        const imagePath = isInSubfolder ? `../images/${item.image}` : `images/${item.image}`;
+        
         itemsHTML += `
             <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="${imagePath}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80x80?text=Product'">
+                </div>
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
                     <p>${item.price}</p>
@@ -81,11 +89,13 @@ function checkout() {
     
     cart.forEach((item, index) => {
         message += `${index + 1}. ${item.name} - ${item.price}\n`;
+        message += `   Image: ${item.image}\n\n`;
         const priceValue = parseInt(item.price.replace(/[₦,]/g, ''));
         total += priceValue;
     });
     
-    message += `\nTotal: ₦${total.toLocaleString()}`;
+    message += `Total: ₦${total.toLocaleString()}\n\n`;
+    message += `Please confirm availability and delivery details. Thank you!`;
     
     const phoneNumber = '2349133993369';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

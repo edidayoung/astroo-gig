@@ -58,6 +58,31 @@
     width: 20px;
 }
 
+/* WhatsApp Link with Border */
+.footer-col ul li a.whatsapp-link {
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: rgba(37, 211, 102, 0.05);
+    margin-top: 5px;
+    margin-left: -10px;
+    padding-left: 10px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a.whatsapp-link i {
+    color: var(--success);
+    margin-left: 0;
+}
+
+.footer-col ul li a.whatsapp-link:hover {
+    background: rgba(37, 211, 102, 0.15);
+    border-color: var(--success);
+    transform: scale(1.02);
+    color: #ffffff;
+}
+
 .footer-bottom {
     padding-top: 30px;
     border-top: 1px solid var(--border);

@@ -38,6 +38,33 @@ function setupSmoothScrolling() {
             }
         });
     });
+    
+    // Scroll to top button functionality
+    initScrollToTop();
+}
+
+// Initialize scroll to top button
+function initScrollToTop() {
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    if (!scrollToTopBtn) return;
+    
+    // Show/hide button on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top on click
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }
 
 // Animate visible products
@@ -73,17 +100,21 @@ function createProductCard(product) {
         badgeHTML = `<div class="product-badge ${product.badge}">${product.badgeText}</div>`;
     }
     
+    // Determine the correct image path based on current location
+    const isInSubfolder = window.location.pathname.includes('/pages/');
+    const imagePath = isInSubfolder ? `../images/${product.image}` : `images/${product.image}`;
+    
     productCard.innerHTML = `
         ${badgeHTML}
         <div class="product-image">
-            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+            <img src="${imagePath}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
         </div>
         <div class="product-info">
             <h3>${product.name}</h3>
             <p class="product-desc">${product.description}</p>
             <div class="product-footer">
                 <span class="price">${product.price}</span>
-                <button class="btn-cart" onclick="addToCart('${product.name.replace(/'/g, "\\'")}', '${product.price}')">
+                <button class="btn-cart" onclick="addToCart('${product.name.replace(/'/g, "\\'")}', '${product.price}', '${product.image}')">
                     <i class="fas fa-shopping-cart"></i>
                 </button>
             </div>
